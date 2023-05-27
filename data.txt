@@ -1,0 +1,39 @@
+# imported packages for the necessary executions in the code
+import sklearn.datasets
+from sklearn import preprocessing
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+import numpy
+#This code loads the iris data set and stores it in the variable named data
+data = sklearn.datasets.load_iris()
+#numData is a variable that stores the data string 'data'
+numData = data[
+'data'
+]
+# data being scaled
+scaledData=preprocessing.scale(numData)
+# Apply k-means algorithm with 2 clusters
+kmeans = KMeans(n_clusters=2, max_iter=300)
+kmeans.fit(scaledData)
+predictions = kmeans.predict(scaledData)
+# Apply k-means algorithm with 3 clusters
+kmeans = KMeans(n_clusters=3, max_iter=300)
+kmeans.fit(scaledData)
+#predict function is operating on the scaled data and then the result is being stored into the preduction variable 
+predictions = kmeans.predict(scaledData)
+# Plotting the data with different colors for different clusters
+plt.scatter(scaledData[:, 0], scaledData[:, 1], c=predictions)
+# Plotting the data with different colors for different clusters
+plt.scatter(scaledData[:, 0], scaledData[:, 1], c=predictions)
+# title of the data 
+plt.title(
+'Iris Data Set Clusters with KMeans Algorithm'
+)
+# x axis label
+plt.xlabel(
+'Yellow color data: 1st Cluster, Green color data: 2nd Cluster, Black color data: 3rd Cluster'
+)
+# y axis label
+plt.ylabel(
+'Y axis' )
+plt.show()
